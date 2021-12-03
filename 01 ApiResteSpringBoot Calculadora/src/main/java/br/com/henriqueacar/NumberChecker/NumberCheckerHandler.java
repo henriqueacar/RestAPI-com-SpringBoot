@@ -1,5 +1,7 @@
 package br.com.henriqueacar.NumberChecker;
 
+import br.com.henriqueacar.exception.MathOperationException;
+
 public class NumberCheckerHandler {
 
 	
@@ -8,17 +10,22 @@ public class NumberCheckerHandler {
 	}
 
 	public Double convertToDouble(String strNumber) {
-		if(strNumber == null)return 0D;
-		String number = strNumber.replaceAll(",", ".");
-		if(isNumeric(number)) return Double.parseDouble(number);
-		return 0D;
-	}
-
-	public boolean isNumeric(String strNumber) {
-		if(strNumber == null)return false;
+		if(strNumber == null)
+			throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo.");
+		
 		String number = strNumber.replaceAll(",", ".");
 		
-		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
+		isNumeric(number);
+		
+		return Double.parseDouble(number);
+	}
+
+	public void isNumeric(String strNumber) {
+		
+		String number = strNumber.replaceAll(",", ".");
+		
+		if(!number.matches("[-+]?[0-9]*\\.?[0-9]+"))
+			throw new MathOperationException("Erro. Por favor, use apenas valores numéricos, não caracteres.");
 	}
 	
 }

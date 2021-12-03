@@ -14,47 +14,41 @@ public class MathOperationsHandler {
 	 * SOMA
 	 * */
 	public Double soma(String numberOne, String numberTwo) throws Exception {
-		Double soma = numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo);
-		return soma;
+		return numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo);
 	}
 
 	/*
 	 * SUBTRACAO
 	 * */
 	public Double subtracao(String numberOne, String numberTwo) throws Exception {
-		Double subtracao = numCheck.convertToDouble(numberOne) - numCheck.convertToDouble(numberTwo);
-		return subtracao;
+		return numCheck.convertToDouble(numberOne) - numCheck.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * MULTIPLICACAO
 	 * */
 	public Double multiplicacao(String numberOne, String numberTwo) throws Exception {
-		Double multiplicacao = numCheck.convertToDouble(numberOne) * numCheck.convertToDouble(numberTwo);
-		return multiplicacao;
+		return numCheck.convertToDouble(numberOne) * numCheck.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * DIVISAO
 	 * */
 	public Double divisao(String numberOne, String numberTwo) throws Exception {
-		Double divisao = numCheck.convertToDouble(numberOne) / numCheck.convertToDouble(numberTwo);
-		return divisao;
+		return numCheck.convertToDouble(numberOne) / numCheck.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * MEDIA
 	 * */
 	public Double media(String numberOne, String numberTwo) throws Exception {
-		Double media = (numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo))/2;
-		return media;
+		return (numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo))/2;
 	}
 	
 	/*
 	 * RAIZ QUADRADA
 	 * */
 	public Double raiz(String numberOne) throws Exception {
-		Double raiz = Math.sqrt(numCheck.convertToDouble(numberOne));
-		return raiz;
+		return Math.sqrt(numCheck.convertToDouble(numberOne));
 	}
 }

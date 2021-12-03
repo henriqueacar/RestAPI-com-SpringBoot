@@ -18,42 +18,34 @@ public class MathController {
 	@RequestMapping(value={"/{metodo}/{numberOne}/{numberTwo}", "/{metodo}/{numberOne}" }, method=RequestMethod.GET)
 	public Double calcula(@PathVariable("metodo") String metodo, @PathVariable("numberOne") String numberOne,
 			@PathVariable(name="numberTwo", required=false) String numberTwo) throws Exception {
+		
+		numCheck.isNumeric(numberOne);
+		
+		if(numberTwo != null) {
+			numCheck.isNumeric(numberTwo);
+		}
+		
 		switch(metodo){
 			case "soma": 
-				if(numberTwo != null && numCheck.isNumeric(numberTwo))
 					return operation.soma(numberOne, numberTwo);
-				else
-					throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo");
 
 			case "subtracao":
-				if(numberTwo != null && numCheck.isNumeric(numberTwo))
 					return operation.subtracao(numberOne, numberTwo);
-				else
-					throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo");
 
 			case "multiplicacao":
-				if(numberTwo != null && numCheck.isNumeric(numberTwo))
 					return operation.multiplicacao(numberOne, numberTwo);
-				else
-					throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo");
 
 			case "divisao":
-				if(numberTwo != null && numCheck.isNumeric(numberTwo))
 					return operation.divisao(numberOne, numberTwo);
-				else
-					throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo");
 
 			case "media":
-				if(numberTwo != null && numCheck.isNumeric(numberTwo))
 					return operation.media(numberOne, numberTwo);
-				else
-					throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo");
 
 			case "raiz":
-				if(numberTwo == null && numCheck.isNumeric(numberOne))
+				if(numberTwo == null)
 					return operation.raiz(numberOne);
 				else
-					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo");
+					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo da raiz quadrada");
 
 			default:
 				break;
