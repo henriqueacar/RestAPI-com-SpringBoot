@@ -73,6 +73,37 @@ public class MathController {
 		
 		return divisao;
 	}
+	
+	/*
+	 * MEDIA
+	 * */
+	@RequestMapping(value="/media/{numberOne}/{numberTwo}", method=RequestMethod.GET)
+	public Double media(@PathVariable("numberOne") String numberOne,
+			@PathVariable("numberTwo") String numberTwo) throws Exception {
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+			throw new MathOperationException("Por favor, coloque valores numericos.");
+		}
+
+		Double media = (convertToDouble(numberOne) + convertToDouble(numberTwo))/2;
+		
+		return media;
+	}
+	
+	/*
+	 * RAIZ QUADRADA
+	 * */
+	@RequestMapping(value="/raiz/{numberOne}", method=RequestMethod.GET)
+	public Double raiz(@PathVariable("numberOne") String numberOne) throws Exception {
+		
+		if(!isNumeric(numberOne)) {
+			throw new MathOperationException("Por favor, coloque valores numericos.");
+		}
+
+		Double raiz = Math.sqrt(convertToDouble(numberOne));
+		
+		return raiz;
+	}
 
 	private Double convertToDouble(String strNumber) {
 		if(strNumber == null)return 0D;
