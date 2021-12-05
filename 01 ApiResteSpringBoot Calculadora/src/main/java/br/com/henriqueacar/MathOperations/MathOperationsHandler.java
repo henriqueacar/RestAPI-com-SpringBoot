@@ -51,4 +51,16 @@ public class MathOperationsHandler {
 	public Double raiz(String numberOne) throws Exception {
 		return Math.sqrt(numCheck.convertToDouble(numberOne));
 	}
-}
+	
+	/**
+	 * FATORIAL
+	 * */
+	public Double fatorial(String numberOne) throws Exception{
+		Double fat = numCheck.convertToDouble(numberOne);
+		if(fat == 0 || fat == 1) {
+			return 1D;
+		}
+		return fat * fatorial(String.valueOf(fat-1));
+	}
+
+}	

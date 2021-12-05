@@ -46,6 +46,11 @@ public class MathController {
 					return operation.raiz(numberOne);
 				else
 					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo da raiz quadrada");
+			case "fatorial":
+				if(numberTwo == null)
+					return operation.fatorial(numberOne);
+				else
+					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo de fatorial");
 
 			default:
 				break;
