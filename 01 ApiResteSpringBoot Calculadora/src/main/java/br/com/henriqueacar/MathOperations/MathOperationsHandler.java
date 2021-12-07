@@ -3,64 +3,56 @@ package br.com.henriqueacar.MathOperations;
 import br.com.henriqueacar.NumberChecker.NumberCheckerHandler;
 
 public class MathOperationsHandler {
-	
-	private NumberCheckerHandler numCheck = new NumberCheckerHandler();
-
-	public MathOperationsHandler() {
-		super();
-	}
-
 	/*
 	 * SOMA
 	 * */
-	public Double soma(String numberOne, String numberTwo) throws Exception {
-		return numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo);
+	public static Double soma(String numberOne, String numberTwo) throws Exception {
+		return NumberCheckerHandler.convertToDouble(numberOne) + NumberCheckerHandler.convertToDouble(numberTwo);
 	}
 
 	/*
 	 * SUBTRACAO
 	 * */
-	public Double subtracao(String numberOne, String numberTwo) throws Exception {
-		return numCheck.convertToDouble(numberOne) - numCheck.convertToDouble(numberTwo);
+	public static Double subtracao(String numberOne, String numberTwo) throws Exception {
+		return NumberCheckerHandler.convertToDouble(numberOne) - NumberCheckerHandler.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * MULTIPLICACAO
 	 * */
-	public Double multiplicacao(String numberOne, String numberTwo) throws Exception {
-		return numCheck.convertToDouble(numberOne) * numCheck.convertToDouble(numberTwo);
+	public static Double multiplicacao(String numberOne, String numberTwo) throws Exception {
+		return NumberCheckerHandler.convertToDouble(numberOne) * NumberCheckerHandler.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * DIVISAO
 	 * */
-	public Double divisao(String numberOne, String numberTwo) throws Exception {
-		return numCheck.convertToDouble(numberOne) / numCheck.convertToDouble(numberTwo);
+	public static Double divisao(String numberOne, String numberTwo) throws Exception {
+		return NumberCheckerHandler.convertToDouble(numberOne) / NumberCheckerHandler.convertToDouble(numberTwo);
 	}
 	
 	/*
 	 * MEDIA
 	 * */
-	public Double media(String numberOne, String numberTwo) throws Exception {
-		return (numCheck.convertToDouble(numberOne) + numCheck.convertToDouble(numberTwo))/2;
+	public static Double media(String numberOne, String numberTwo) throws Exception {
+		return (NumberCheckerHandler.convertToDouble(numberOne) + NumberCheckerHandler.convertToDouble(numberTwo))/2;
 	}
 	
 	/*
 	 * RAIZ QUADRADA
 	 * */
-	public Double raiz(String numberOne) throws Exception {
-		return Math.sqrt(numCheck.convertToDouble(numberOne));
+	public static Double raiz(String numberOne) throws Exception {
+		return Math.sqrt(NumberCheckerHandler.convertToDouble(numberOne));
 	}
 	
 	/**
 	 * FATORIAL
 	 * */
-	public Double fatorial(String numberOne) throws Exception{
-		Double fat = numCheck.convertToDouble(numberOne);
+	public static Double fatorial(String numberOne) throws Exception{
+		Double fat = NumberCheckerHandler.convertToDouble(numberOne);
 		if(fat == 0 || fat == 1) {
 			return 1D;
 		}
 		return fat * fatorial(String.valueOf(fat-1));
 	}
-
 }	

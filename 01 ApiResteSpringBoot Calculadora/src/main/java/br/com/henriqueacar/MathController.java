@@ -12,43 +12,40 @@ import br.com.henriqueacar.exception.MathOperationException;
 @RestController
 public class MathController {
 	
-	private MathOperationsHandler operation = new MathOperationsHandler();
-	private NumberCheckerHandler numCheck = new NumberCheckerHandler();
-	
 	@RequestMapping(value={"/{metodo}/{numberOne}/{numberTwo}", "/{metodo}/{numberOne}" }, method=RequestMethod.GET)
 	public Double calcula(@PathVariable("metodo") String metodo, @PathVariable("numberOne") String numberOne,
 			@PathVariable(name="numberTwo", required=false) String numberTwo) throws Exception {
 		
-		numCheck.isNumeric(numberOne);
+		NumberCheckerHandler.isNumeric(numberOne);
 		
 		if(numberTwo != null) {
-			numCheck.isNumeric(numberTwo);
+			NumberCheckerHandler.isNumeric(numberTwo);
 		}
 		
 		switch(metodo){
 			case "soma": 
-					return operation.soma(numberOne, numberTwo);
+					return MathOperationsHandler.soma(numberOne, numberTwo);
 
 			case "subtracao":
-					return operation.subtracao(numberOne, numberTwo);
+					return MathOperationsHandler.subtracao(numberOne, numberTwo);
 
 			case "multiplicacao":
-					return operation.multiplicacao(numberOne, numberTwo);
+					return MathOperationsHandler.multiplicacao(numberOne, numberTwo);
 
 			case "divisao":
-					return operation.divisao(numberOne, numberTwo);
+					return MathOperationsHandler.divisao(numberOne, numberTwo);
 
 			case "media":
-					return operation.media(numberOne, numberTwo);
+					return MathOperationsHandler.media(numberOne, numberTwo);
 
 			case "raiz":
 				if(numberTwo == null)
-					return operation.raiz(numberOne);
+					return MathOperationsHandler.raiz(numberOne);
 				else
 					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo da raiz quadrada");
 			case "fatorial":
 				if(numberTwo == null)
-					return operation.fatorial(numberOne);
+					return MathOperationsHandler.fatorial(numberOne);
 				else
 					throw new MathOperationException("Erro. Por favor, use apenas um valor numérico para o cálculo de fatorial");
 
