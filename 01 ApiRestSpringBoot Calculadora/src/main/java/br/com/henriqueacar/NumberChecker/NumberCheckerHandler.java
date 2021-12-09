@@ -1,10 +1,13 @@
 package br.com.henriqueacar.NumberChecker;
 
+import org.springframework.stereotype.Service;
+
 import br.com.henriqueacar.exception.MathOperationException;
 
+@Service
 public class NumberCheckerHandler {
 
-	public static Double convertToDouble(String strNumber) {
+	public Double convertToDouble(String strNumber) {
 		if(strNumber == null)
 			throw new MathOperationException("Erro. Por favor, use dois valores numéricos para o cálculo.");
 		
@@ -15,7 +18,7 @@ public class NumberCheckerHandler {
 		return Double.parseDouble(number);
 	}
 
-	public static void isNumeric(String strNumber) {
+	public void isNumeric(String strNumber) {
 		
 		String number = strNumber.replaceAll(",", ".");
 		
