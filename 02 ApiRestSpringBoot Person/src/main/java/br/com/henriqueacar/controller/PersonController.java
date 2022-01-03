@@ -1,4 +1,4 @@
-package br.com.henriqueacar;
+package br.com.henriqueacar.controller;
 
 import java.util.List;
 
@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.henriqueacar.model.Person;
+import br.com.henriqueacar.data.vo.PersonVO;
+import br.com.henriqueacar.data.vo.v2.PersonVOV2;
 import br.com.henriqueacar.services.PersonServices;
 
 @RestController
@@ -29,22 +30,27 @@ public class PersonController {
 	private PersonServices services;
 	
 	@GetMapping
-	public List<Person> findAll() throws Exception {
+	public List<PersonVO> findAll() throws Exception {
 		return services.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Person findById(@PathVariable("id") Long id) throws Exception {
+	public PersonVO findById(@PathVariable("id") Long id) throws Exception {
 		return services.findById(id);
 	}
 	
 	@PostMapping
-	public Person create(@RequestBody Person person) throws Exception {
+	public PersonVO create(@RequestBody PersonVO person) throws Exception {
 		return services.create(person);
 	}
 	
+	@PostMapping("/v2")
+	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) throws Exception {
+		return services.createV2(person);
+	}
+	
 	@PutMapping
-	public Person update(@RequestBody Person person) throws Exception {
+	public PersonVO update(@RequestBody PersonVO person) throws Exception {
 		return services.update(person);
 	}
 	
