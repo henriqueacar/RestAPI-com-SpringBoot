@@ -29,27 +29,30 @@ public class PersonController {
 	@Autowired
 	private PersonServices services;
 	
-	@GetMapping
+	@GetMapping(produces = {"application/json", "application/xml"})
 	public List<PersonVO> findAll() throws Exception {
 		return services.findAll();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value ="/{id}", produces = {"application/json", "application/xml"})
 	public PersonVO findById(@PathVariable("id") Long id) throws Exception {
 		return services.findById(id);
 	}
 	
-	@PostMapping
+	@PostMapping(produces = {"application/json", "application/xml"},
+				 consumes = {"application/json", "application/xml"})
 	public PersonVO create(@RequestBody PersonVO person) throws Exception {
 		return services.create(person);
 	}
 	
-	@PostMapping("/v2")
+	@PostMapping(value = "/v2", produces = {"application/json", "application/xml"},
+			 					consumes = {"application/json", "application/xml"})
 	public PersonVOV2 createV2(@RequestBody PersonVOV2 person) throws Exception {
 		return services.createV2(person);
 	}
 	
-	@PutMapping
+	@PutMapping(produces = {"application/json", "application/xml"},
+			    consumes = {"application/json", "application/xml"})
 	public PersonVO update(@RequestBody PersonVO person) throws Exception {
 		return services.update(person);
 	}

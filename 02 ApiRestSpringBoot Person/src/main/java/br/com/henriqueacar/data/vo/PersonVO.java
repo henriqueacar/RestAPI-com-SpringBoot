@@ -20,10 +20,10 @@ public class PersonVO implements Serializable{
 	@JsonProperty("Sobrenome")
 	private String lastName;
 	
-	@JsonProperty("Endereço")
+	@JsonProperty("Endereco")
 	private String address;
 	
-	@JsonProperty("Gênero")
+	@JsonProperty("Genero")
 	private String gender;
 	
 	public PersonVO() {
