@@ -6,6 +6,10 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+/*
+ * Padrão VALUE OBJECT
+ * 
+ * */
 @JsonPropertyOrder({"firstName", "lastName", "gender", "id", "address"})
 public class PersonVO implements Serializable{
 
