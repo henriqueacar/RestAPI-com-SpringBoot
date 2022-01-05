@@ -22,7 +22,7 @@ public class DozerConverterTest {
     @Test
     public void parseEntityToVOTest() {
         PersonVO output = DozerConverter.parseObject(inputObject.mockEntity(), PersonVO.class);
-        Assert.assertEquals(Long.valueOf(0L), output.getId());
+        Assert.assertEquals(Long.valueOf(0L), output.getKey());
         Assert.assertEquals("PrimeiroNome", output.getFirstName());
         Assert.assertEquals("Sobrenome", output.getLastName());
         Assert.assertEquals("Endereço teste0", output.getAddress());
@@ -34,7 +34,7 @@ public class DozerConverterTest {
         List<PersonVO> outputList = DozerConverter.parseListObjects(inputObject.mockEntityList(), PersonVO.class);
         PersonVO outputZero = outputList.get(0);
         
-        Assert.assertEquals(Long.valueOf(0L), outputZero.getId());
+        Assert.assertEquals(Long.valueOf(0L), outputZero.getKey());
         Assert.assertEquals("PrimeiroNome", outputZero.getFirstName());
         Assert.assertEquals("Sobrenome", outputZero.getLastName());
         Assert.assertEquals("Endereço teste0", outputZero.getAddress());
@@ -42,7 +42,7 @@ public class DozerConverterTest {
         
         PersonVO outputSeven = outputList.get(7);
         
-        Assert.assertEquals(Long.valueOf(7L), outputSeven.getId());
+        Assert.assertEquals(Long.valueOf(7L), outputSeven.getKey());
         Assert.assertEquals("PrimeiroNome", outputSeven.getFirstName());
         Assert.assertEquals("Sobrenome", outputSeven.getLastName());
         Assert.assertEquals("Endereço teste7", outputSeven.getAddress());
@@ -50,7 +50,7 @@ public class DozerConverterTest {
         
         PersonVO outputTwelve = outputList.get(12);
         
-        Assert.assertEquals(Long.valueOf(12L), outputTwelve.getId());
+        Assert.assertEquals(Long.valueOf(12L), outputTwelve.getKey());
         Assert.assertEquals("PrimeiroNome", outputTwelve.getFirstName());
         Assert.assertEquals("Sobrenome", outputTwelve.getLastName());
         Assert.assertEquals("Endereço teste12", outputTwelve.getAddress());

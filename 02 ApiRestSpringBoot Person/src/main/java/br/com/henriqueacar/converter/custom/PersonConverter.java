@@ -16,7 +16,7 @@ public class PersonConverter {
 		vo.setBirthday(new Date());
 		vo.setFirstName(person.getFirstName());
 		vo.setGender(person.getGender());
-		vo.setId(person.getId());
+		vo.setKey(person.getId());
 		vo.setLastName(person.getLastName());
 		return vo;
 	}
@@ -26,7 +26,7 @@ public class PersonConverter {
 		entity.setAddress(person.getAddress());
 		entity.setFirstName(person.getFirstName());
 		entity.setGender(person.getGender());
-		entity.setId(person.getId());
+		entity.setId(person.getKey());
 		entity.setLastName(person.getLastName());
 		return entity;
 	}

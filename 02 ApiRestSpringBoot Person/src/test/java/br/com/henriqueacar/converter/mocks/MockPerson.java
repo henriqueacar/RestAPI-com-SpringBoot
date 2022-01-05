@@ -49,7 +49,7 @@ public class MockPerson {
 		person.setAddress("Endereço teste" + number);
 		person.setFirstName("PrimeiroNome");
 		person.setGender(((number % 2) == 0) ? "Masculino" : "Feminino");
-		person.setId(number.longValue());
+		person.setKey(number.longValue());
 		person.setLastName("Sobrenome");
 		return person;
 	}

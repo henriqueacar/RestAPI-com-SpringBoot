@@ -4,11 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import com.github.dozermapper.core.Mapping;
+
 public class PersonVOV2 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Long id;
+	@Mapping("id")
+	private Long key;
+	
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -19,12 +23,18 @@ public class PersonVOV2 implements Serializable {
 		
 	}
 
-	public Long getId() {
-		return id;
+	/**
+	 * @return the key
+	 */
+	public Long getKey() {
+		return key;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	/**
+	 * @param key the key to set
+	 */
+	public void setKey(Long key) {
+		this.key = key;
 	}
 
 	public String getFirstName() {
@@ -69,7 +79,7 @@ public class PersonVOV2 implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, birthday, firstName, gender, id, lastName);
+		return Objects.hash(address, birthday, firstName, gender, key, lastName);
 	}
 
 	@Override
@@ -83,9 +93,6 @@ public class PersonVOV2 implements Serializable {
 		PersonVOV2 other = (PersonVOV2) obj;
 		return Objects.equals(address, other.address) && Objects.equals(birthday, other.birthday)
 				&& Objects.equals(firstName, other.firstName) && Objects.equals(gender, other.gender)
-				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName);
+				&& Objects.equals(key, other.key) && Objects.equals(lastName, other.lastName);
 	}
-	
-	
-
 }
