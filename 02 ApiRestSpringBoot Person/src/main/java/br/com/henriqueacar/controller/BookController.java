@@ -29,14 +29,28 @@ public class BookController {
 	@GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
 	public List<BookVO> findAll() throws Exception{
 		List<BookVO> books = services.findAll();
-		//adicionar HATEOAS
+
+		books
+		.stream()
+		.forEach(p -> {
+			try {
+				p.add(
+						linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()
+						);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+		
 		return books;
 	}
 	
 	@GetMapping(value ="/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO findById(@PathVariable("id") Long id) throws Exception {
 		BookVO bookVO = services.findById(id);
-		//adicionar HATEOAS
+		
+		bookVO.add(linkTo(methodOn(BookController.class).findById(id)).withSelfRel());
+		
 		return bookVO;
 	}
 	
@@ -44,7 +58,9 @@ public class BookController {
 			 	 consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO create(@RequestBody BookVO book) throws Exception {
 		BookVO bookVO = services.create(book);
-		//adicionar HATEOAS
+		
+		bookVO.add(linkTo(methodOn(BookController.class).findById(bookVO.getKey())).withSelfRel());
+		
 		return bookVO;
 	}
 	
@@ -52,7 +68,9 @@ public class BookController {
 		    	consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO update(@RequestBody BookVO book) throws Exception{
 		BookVO bookVO = services.update(book);
-		//adicionar HATEOAS
+		
+		bookVO.add(linkTo(methodOn(BookController.class).findById(book.getKey())).withSelfRel());
+		
 		return bookVO;
 	}
 	
