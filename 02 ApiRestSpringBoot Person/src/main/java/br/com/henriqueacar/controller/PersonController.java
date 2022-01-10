@@ -16,21 +16,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.henriqueacar.config.SwaggerConfig;
 import br.com.henriqueacar.data.vo.PersonVO;
 import br.com.henriqueacar.services.PersonServices;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(tags = {SwaggerConfig.PERSON_TAG})
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-	
-	//API apenas para entender o funcionamento dos verbos HTTP
-	
-	//Verbo POST é muito usado para persistência de dados, para gravação
-	//Verbo PUT é geralmente utilizado para atualizações, logo é necessário que o objeto já exista
-	
+
 	@Autowired
 	private PersonServices services;
 	
+	@ApiOperation(value ="Person/findAll - Find all persons")
 	@GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
 	public List<PersonVO> findAll() throws Exception {
 		List<PersonVO> persons = services.findAll();
@@ -53,6 +53,7 @@ public class PersonController {
 		return persons;
 	}
 	
+	@ApiOperation(value ="Person/findById - Find specific person by ID")
 	@GetMapping(value ="/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
 	public PersonVO findById(@PathVariable("id") Long id) throws Exception {
 		PersonVO personVO = services.findById(id);
@@ -60,6 +61,7 @@ public class PersonController {
 		return personVO;
 	}
 	
+	@ApiOperation(value ="Person/create - Create new person on DB")
 	@PostMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
 				 consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public PersonVO create(@RequestBody PersonVO person) throws Exception {
@@ -76,6 +78,7 @@ public class PersonController {
 		return personVOV2;
 	}*/
 	
+	@ApiOperation(value ="Person/update - Update specific person")
 	@PutMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
 			    consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public PersonVO update(@RequestBody PersonVO person) throws Exception {
@@ -84,6 +87,7 @@ public class PersonController {
 		return personVO;
 	}
 	
+	@ApiOperation(value ="Person/delete - Delete specific person by ID")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) throws Exception {
 		services.delete(id);

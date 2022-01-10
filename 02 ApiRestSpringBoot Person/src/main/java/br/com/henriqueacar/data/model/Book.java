@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="books")
@@ -31,6 +33,7 @@ public class Book implements Serializable {
 	private Double price;
 	
 	@Column(name="launch_date", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date date;
 
 	public Book() {

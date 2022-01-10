@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.henriqueacar.config.SwaggerConfig;
 import br.com.henriqueacar.data.vo.BookVO;
 import br.com.henriqueacar.services.BookService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
+@Api(tags = {SwaggerConfig.BOOK_TAG})
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -26,6 +30,7 @@ public class BookController {
 	@Autowired
 	private BookService services;
 	
+	@ApiOperation(value ="Book/findAll - Find all books")
 	@GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
 	public List<BookVO> findAll() throws Exception{
 		List<BookVO> books = services.findAll();
@@ -45,6 +50,7 @@ public class BookController {
 		return books;
 	}
 	
+	@ApiOperation(value ="Book/findById - Find specific book by ID")
 	@GetMapping(value ="/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO findById(@PathVariable("id") Long id) throws Exception {
 		BookVO bookVO = services.findById(id);
@@ -54,6 +60,7 @@ public class BookController {
 		return bookVO;
 	}
 	
+	@ApiOperation(value ="Book/create - Create new book on DB")
 	@PostMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
 			 	 consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO create(@RequestBody BookVO book) throws Exception {
@@ -64,6 +71,7 @@ public class BookController {
 		return bookVO;
 	}
 	
+	@ApiOperation(value ="Book/update - Update specific book")
 	@PutMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
 		    	consumes = {"application/json", "application/xml", "application/x-yaml"})
 	public BookVO update(@RequestBody BookVO book) throws Exception{
@@ -74,6 +82,7 @@ public class BookController {
 		return bookVO;
 	}
 	
+	@ApiOperation(value ="Book/delete - Deleta specific book by ID")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) throws Exception {
 		services.delete(id);
